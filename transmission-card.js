@@ -261,6 +261,7 @@ class TransmissionCard extends LitElement {
       'hide_limit': true,
       'default_limit': 'all',
       'download_path': '',
+      'hide_speed': false,
     }
 
     this.config = {
@@ -309,6 +310,9 @@ class TransmissionCard extends LitElement {
   }
 
   renderTitle() {
+    if (this.config.hide_speed)
+      return html``;
+    else {
     const gattributes = this._getGAttributes();
     return html
     `
@@ -332,6 +336,7 @@ class TransmissionCard extends LitElement {
         ${this.renderLimitSelect()}
       </div>
     `;
+    }
   }
 
   _show_more_info(entity_id) {
